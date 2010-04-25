@@ -23,6 +23,7 @@ class Triangle(object):
         self._area_A = 0
         self._angle_alpha = 0
         self._angle_beta = 0
+        
         self.triangle_vars = [self._line_a, self._line_b, self._line_c,
                               self._line_p, self._line_q, self._line_h,
                               self._area_A, self._angle_alpha, self._angle_beta]
@@ -54,8 +55,29 @@ class Triangle(object):
     # Hier sollten dann noch die Funktionen zum berechnen reinkommen 
 
     def get_value(self):
-        return self.triangle_vars        
-            
+        return self.triangle_vars
+
+    def calc_c(self):
+        if self._line_c != 0:
+            if self._line_a != 0 and self._line_b != 0:   
+                c = (self._line_a**2 + self._line_b**2).sqrt()
+                
+            elif self._line_h != 0 and self._area_A != 0:
+                c = self._area_A*2 / self._line_h
+                
+            elif self._line_p != 0 and self._line_q != 0:
+                c = self._line_p + self._line_q
+
+            elif self._line_a != 0 and self._angle_alpha != 0:
+                c = self._line_a / exactmath.sin(self._angle_alpha)
+
+            elif self._line_a != 0 and self._angle_beta != 0:
+                c = self._line_a / exactmath.cos(self._angle_beta)
+
+            self._line_c = c
+
+        return self._line_c
+        
 
 dreieck = Triangle()
 dreieck.set_value([0, 0, 35, 0, 0, 0, 0, 0, 21])

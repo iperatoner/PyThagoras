@@ -75,6 +75,21 @@ def sin(x):
     return +s
 
 
+def cos(x):
+
+    getcontext().prec += 2
+    i, lasts, s, fact, num, sign = 0, 0, 1, 1, 1, 1
+    while s != lasts:
+        lasts = s
+        i += 2
+        fact *= i * (i-1)
+        num *= x * x
+        sign *= -1
+        s += num / fact * sign
+    getcontext().prec -= 2
+    return +s
+
+
 def fakultaet(ya):
 
     fa = 1
