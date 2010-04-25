@@ -3,8 +3,8 @@
 # Berechnungen für sin und asin, kommen später zur Dreiecksklasse
 
 from decimal import *
-getcontext().prec = 1500
 
+PREC = 1500
 PI = Decimal(str('''3.1415926535897932384626433832
                   795028841971693993751058209749
                   445923078164062862089986280348
@@ -56,7 +56,9 @@ PI = Decimal(str('''3.1415926535897932384626433832
                   302861829745557067498385054945
                   8858692699569092721079750930296'''
                       ).replace("\n", "").replace(" ",""))
-                              
+
+
+getcontext().prec = PREC
 
 def sin(x):
 

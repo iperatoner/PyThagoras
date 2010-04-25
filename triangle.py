@@ -8,6 +8,8 @@
 from decimal import *
 import exactmath
 
+getcontext().prec = exactmath.PREC
+
 class Triangle(object):
     
     def __init__(self):
