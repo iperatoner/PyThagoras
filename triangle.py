@@ -58,7 +58,7 @@ class Triangle(object):
         return self.triangle_vars
 
     def calc_c(self):
-        if self._line_c != 0:
+        if self._line_c == 0:
             if self._line_a != 0 and self._line_b != 0:   
                 c = (self._line_a**2 + self._line_b**2).sqrt()
                 
@@ -83,6 +83,18 @@ class Triangle(object):
             self._line_c = c
 
         return self._line_c
+
+    def calc_alpha(self):
+        if self._angle_alpha == 0:
+            if self._angle_beta != 0:
+                alpha = (90 - self._angle_beta)
+
+            elif self._line_a != 0 and self._line_c != 0:
+                alpha = exactmath.asin(self._line_a / self._line_c)
+
+            self._angle_alpha = alpha
+
+        return self._angle_alpha
         
 
 dreieck = Triangle()
