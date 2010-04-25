@@ -74,6 +74,12 @@ class Triangle(object):
             elif self._line_a != 0 and self._angle_beta != 0:
                 c = self._line_a / exactmath.cos(self._angle_beta)
 
+            elif self._line_b != 0 and self._angle_alpha != 0:
+                c = self._line_b / exactmath.cos(self._angle_alpha)
+
+            elif self._line_b != 0 and self._angle_beta != 0:
+                c = self._line_b / exactmath.sin(self._angle_beta)
+
             self._line_c = c
 
         return self._line_c

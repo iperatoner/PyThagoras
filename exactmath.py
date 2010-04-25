@@ -79,6 +79,7 @@ def pi():
     getcontext().prec -= 2
     return +s               # unary plus applies the new precision
 
+
 def sin(x):
 
     getcontext().prec += 2
