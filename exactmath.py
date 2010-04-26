@@ -3,7 +3,7 @@
 # Berechnungen für sin und asin, kommen später zur Dreiecksklasse
 
 from decimal import *
-
+import math
 PREC = 1500
 PI = Decimal(str('''3.1415926535897932384626433832
                   795028841971693993751058209749
@@ -95,21 +95,6 @@ def sin(x):
     return +s
 
 
-def cos(x):
-
-    getcontext().prec += 2
-    i, lasts, s, fact, num, sign = 0, 0, 1, 1, 1, 1
-    while s != lasts:
-        lasts = s
-        i += 2
-        fact *= i * (i-1)
-        num *= x * x
-        sign *= -1
-        s += num / fact * sign
-    getcontext().prec -= 2
-    return +s
-
-
 def fakultaet(ya):
 
     fa = 1
@@ -124,15 +109,17 @@ def fakultaet(ya):
 
 def asin(x):
 
-    y = 0
-    n = 0
-    while n < 1000:
-        y += ((fakultaet(2*n))/((4**n)*(fakultaet(n))**2*(2*n+1)))*x**(2*n+1) # alle Werte zu decimals machen
+    y = Decimal('0')
+    n = Decimal('0')
+    asin_numerator = fakultaet(Decimal('2')*n)
+    asin_denominator = (Decimal('4')**n)*(fakultaet(n)**Decimal('2'))*(Decimal('2')*n+Decimal('1'))
+    while n < 2:
+        y += (asin_numerator/asin_denominator)*x**(Decimal('2')*n+Decimal('1'))
         n += 1
     return y
 
-"""Winkel = int(input("Winkel: "))
-Winkel2 = Winkel*pi()/180
+Winkel = int(input("Winkel: "))
+Winkel2 = Winkel*PI/180
 sinus = sin(Winkel2)
-result_asin = asin(sinus)*180/pi()
-print(result_asin)"""
+result_asin = math.asin(float(sinus))*180/float(PI)
+print(result_asin)
