@@ -43,6 +43,8 @@ class Triangle(object):
 
         if self.number_of_not_0 == 2:
             self.valid_triangle = True
+        elif self.triangle_vars[-1] != 0 and self.triangle_vars[-2] != 0:
+            self.valid_triangle = False
         else:
             self.valid_triangle = False
             
@@ -65,7 +67,12 @@ class Triangle(object):
             elif self._line_c != 0 and self._line_p != 0:
                 a = (self._line_c * self._line_p).sqrt()
 
-            # b+alpha, c+alpha, p+beta, h+beta
+            elif self._line_c != 0 and self._anchor_alpha != 0:
+                a = sin(self._anchor_alpha) * self._line_c
+
+            elif self._line_h != 0 and self._anchor_beta != 0:
+                a = self._line_h/sinus(self._anchor_beta)
+
 
     def calc_c(self):
         if self._line_c == 0:
