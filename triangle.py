@@ -67,8 +67,8 @@ class Triangle(object):
             elif self._line_c != 0 and self._line_p != 0:
                 a = (self._line_c * self._line_p).sqrt()
 
-            elif self._line_c != 0 and self._anchor_alpha != 0:
-                a = sin(self._anchor_alpha) * self._line_c
+            elif self._line_c != 0 and self._angle_alpha != 0:
+                a = exactmath.sin(self._angle_alpha) * self._line_c
 
             elif self._line_h != 0 and self._anchor_beta != 0:
                 a = self._line_h/sinus(self._anchor_beta)
