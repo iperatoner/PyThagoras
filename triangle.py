@@ -88,12 +88,6 @@ class Triangle(object):
             elif self._line_a != 0 and self._angle_alpha != 0:
                 c = self._line_a / exactmath.sin(self._angle_alpha)
 
-            elif self._line_a != 0 and self._angle_beta != 0:
-                c = self._line_a / exactmath.cos(self._angle_beta)
-
-            elif self._line_b != 0 and self._angle_alpha != 0:
-                c = self._line_b / exactmath.cos(self._angle_alpha)
-
             elif self._line_b != 0 and self._angle_beta != 0:
                 c = self._line_b / exactmath.sin(self._angle_beta)
 
@@ -109,6 +103,9 @@ class Triangle(object):
             elif self._line_a != 0 and self._line_c != 0:
                 alpha = exactmath.asin(self._line_a / self._line_c)
 
+            elif self._line_h != 0 and self._line_b != 0:
+                alpha = exactmath.asin(self._line_h / self._line_b)
+
             self._angle_alpha = alpha
 
         return self._angle_alpha
@@ -120,6 +117,9 @@ class Triangle(object):
 
             elif self._line_a != 0 and self._line_c != 0:
                 beta = exactmath.asin(self._line_b / self._line_c)
+
+            elif self._line_h != 0 and self._line_a != 0:
+                beta = exactmath.asin(self._line_h / self._line_a)
 
             self._angle_beta = beta
 
