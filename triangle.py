@@ -13,7 +13,6 @@ getcontext().prec = exactmath.PREC
 class Triangle(object):
     
     def __init__(self):
-        # private Variablen:
         self._line_a =  0
         self._line_b = 0
         self._line_c = 0
@@ -54,7 +53,7 @@ class Triangle(object):
         self.triangle_vars = triangle_vars
         self.validation(dreieck.triangle_vars)
 
-    # Hier sollten dann noch die Funktionen zum berechnen reinkommen 
+ 
 
     def get_value(self):
         return self.triangle_vars
