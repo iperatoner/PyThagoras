@@ -1,0 +1,5 @@
+git clone git://github.com/iperatoner/PyThagoras  # Holen
+git commit -am "Hier schreiben, was geändert wurde." # Änderungen erfassen
+git push git@github.com:iperatoner/PyThagoras # Änderungen hochladen
+git pull git@github.com:iperatoner/PyThagoras master # Änderungen von anderen besorgen
+git add dateiname.endung # Datei hinzufügen

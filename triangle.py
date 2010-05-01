@@ -6,9 +6,9 @@
 '''
 
 from decimal import *
-import exactmath
+import math
 
-getcontext().prec = exactmath.PREC
+getcontext().prec = 100
 
 class Triangle(object):
     
@@ -28,6 +28,7 @@ class Triangle(object):
                               self._area_A, self._angle_alpha, self._angle_beta]
 
         self.valid_triangle = False
+        self.exact_triangle = True
         
 
     def validation(self, triangle_vars):
@@ -56,7 +57,7 @@ class Triangle(object):
  
 
     def get_value(self):
-        return self.triangle_vars
+        return self.triangle_vars, self.exact_triangle
 
     def calc_a(self):
         if self._line_a == 0:
@@ -67,10 +68,35 @@ class Triangle(object):
                 a = (self._line_c * self._line_p).sqrt()
 
             elif self._line_c != 0 and self._angle_alpha != 0:
-                a = exactmath.sin(self._angle_alpha) * self._line_c
+                a = math.sin(self._angle_alpha) * self._line_c
 
             elif self._line_h != 0 and self._anchor_beta != 0:
-                a = self._line_h/sinus(self._anchor_beta)
+                a = self._line_h/math.sin(self._anchor_beta)
+
+            elif self._line_b != 0 and self._anchor_alpha != 0:
+                pass
+
+            self._line_a = a
+
+        return self._line_a
+
+    def calc_b(self):
+        if self._line_b == 0:
+            if self._line_a != 0 and self._line_c != 0:
+                b = (self._line_c**2 - self._line_b**2).sqrt()
+
+            '''elif self._line_c != 0 and self._line_p != 0:
+                a = (self._line_c * self._line_p).sqrt()
+
+            elif self._line_c != 0 and self._angle_alpha != 0:
+                a = math.sin(self._angle_alpha) * self._line_c
+
+            elif self._line_h != 0 and self._anchor_beta != 0:
+                a = self._line_h/math.sin(self._anchor_beta)
+
+            self._line_a = a
+
+        return self._line_a'''
 
 
     def calc_c(self):
@@ -85,10 +111,10 @@ class Triangle(object):
                 c = self._line_p + self._line_q
 
             elif self._line_a != 0 and self._angle_alpha != 0:
-                c = self._line_a / exactmath.sin(self._angle_alpha)
+                c = self._line_a / math.sin(self._angle_alpha)
 
             elif self._line_b != 0 and self._angle_beta != 0:
-                c = self._line_b / exactmath.sin(self._angle_beta)
+                c = self._line_b / math.sin(self._angle_beta)
 
             self._line_c = c
 
@@ -100,10 +126,10 @@ class Triangle(object):
                 alpha = (90 - self._angle_beta)
 
             elif self._line_a != 0 and self._line_c != 0:
-                alpha = exactmath.asin(self._line_a / self._line_c)
+                alpha = math.asin(self._line_a / self._line_c)
 
             elif self._line_h != 0 and self._line_b != 0:
-                alpha = exactmath.asin(self._line_h / self._line_b)
+                alpha = math.asin(self._line_h / self._line_b)
 
             self._angle_alpha = alpha
 
@@ -115,10 +141,10 @@ class Triangle(object):
                 alpha = (90 - self._angle_alpha)
 
             elif self._line_a != 0 and self._line_c != 0:
-                beta = exactmath.asin(self._line_b / self._line_c)
+                beta = math.asin(self._line_b / self._line_c)
 
             elif self._line_h != 0 and self._line_a != 0:
-                beta = exactmath.asin(self._line_h / self._line_a)
+                beta = math.asin(self._line_h / self._line_a)
 
             self._angle_beta = beta
 
