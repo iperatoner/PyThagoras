@@ -1,0 +1,21 @@
+          /|\
+         / | \
+        /  |  \
+       /   A   \
+      /    |    \
+     /     |     \a
+   b/     h|      \
+   /       |       \
+  /       /|        \
+ / \     /.|       / \
+/_al\__p/__|____q_/be_\
+          c
+a for line a
+b for line b
+c for line c
+h for line h
+p for line p
+q for line q
+al for angle alpha
+be for angle beta
+A for area A
