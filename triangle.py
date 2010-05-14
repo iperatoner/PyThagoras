@@ -101,20 +101,26 @@ class Triangle(object):
     def calc_b(self):
         if self._line_b == 0:
             if self._line_a != 0 and self._line_c != 0:
-                b = (self._line_c**2 - self._line_b**2).sqrt()
+                b = math.sqrt(self._line_c**2 - self._line_a**2)
 
-            '''elif self._line_c != 0 and self._line_p != 0:
-                a = (self._line_c * self._line_p).sqrt()
+            elif self._line_a != 0 and self._area_A != 0:
+                b = self._area_A/(0.5*self._line_a)
 
             elif self._line_c != 0 and self._angle_alpha != 0:
-                a = math.sin(self._angle_alpha) * self._line_c
+                b = math.cos(self._angle_alpha) * self._line_c
 
-            elif self._line_h != 0 and self._anchor_beta != 0:
-                a = self._line_h/math.sin(self._anchor_beta)
+            elif self._line_a != 0 and self._anchor_beta != 0:
+                b = self._line_a/math.tan(self._anchor_beta)
+            
+            elif self._line_a != 0 and self._angle_beta != 0:
+                b = math.tan(self._angle_beta) * self._line_a
 
-            self._line_a = a
+            '''elif self._line_a != 0 and self._anchor_beta != 0:
+                b = self._line_a/math.tan(self._anchor_beta)'''
 
-        return self._line_a'''
+            self._line_b = b
+
+        return self._line_a
 
 
     def calc_c(self):
