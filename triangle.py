@@ -115,8 +115,17 @@ class Triangle(object):
             elif self._line_a != 0 and self._angle_beta != 0:
                 b = math.tan(self._angle_beta) * self._line_a
 
-            '''elif self._line_a != 0 and self._anchor_beta != 0:
-                b = self._line_a/math.tan(self._anchor_beta)'''
+            elif self._line_c != 0 and self._anchor_beta != 0:
+                b = self._line_c * math.sin(self._anchor_beta)
+
+            elif self._line_h != 0 and self._line_q != 0:
+                b = math.sqrt(self._line_h**2 - self._line_q**2)
+
+            elif self._line_q != 0 and self._anchor_alpha != 0:
+                b = self._line_q / math.cos(self._anchor_alpha)
+
+            elif self._line_h != 0 and self._anchor_alpha != 0:
+                b = self._line_h / math.sin(self._anchor_alpha)
 
             self._line_b = b
 
@@ -139,6 +148,18 @@ class Triangle(object):
 
             elif self._line_b != 0 and self._angle_beta != 0:
                 c = self._line_b / math.sin(self._angle_beta)
+
+            elif self._line_b != 0 and self._angle_alpha != 0:
+                c = self._line_b / math.cos(self._angle_alpha)
+
+            elif self._line_a != 0 and self._angle_beta != 0:
+                c = self._line_a / math.cos(self._angle_beta)
+
+            elif self._line_p != 0 and self._line_b != 0:
+                c = ((math.sqrt(4*self._line_b**2+p**2))+p)/2
+
+            elif self._line_q != 0 and self._line_q != 0:
+                c = ((math.sqrt(4*self._line_a**2+q**2))+q)/2
 
             self._line_c = c
 
