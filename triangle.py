@@ -135,7 +135,7 @@ class Triangle(object):
     def calc_c(self):
         if self._line_c == 0:
             if self._line_a != 0 and self._line_b != 0:   
-                c = (self._line_a**2 + self._line_b**2).sqrt()
+                c = math.sqrt(self._line_a**2 + self._line_b**2)
                 
             elif self._line_h != 0 and self._area_A != 0:
                 c = self._area_A*2 / self._line_h
@@ -165,6 +165,37 @@ class Triangle(object):
 
         return self._line_c
 
+    def calc_p(self):
+        if self._line_p == 0:
+            if self._line_a != 0 and self._line_q != 0:   
+                p = ((math.sqrt(4*(a**2)+q**2))-q)/2
+                
+            elif self._line_h != 0 and self._line_a != 0:
+                p = math.sqrt(a**2-h**2)
+                
+            elif self._line_c != 0 and self._line_q != 0:
+                p = self._line_h**2/self._line_q
+
+            elif self._line_q != 0 and self._area_A != 0:
+                p = ((-6*math.sqrt(3)*self._area_A*
+                      math.sqrt(27*self._area_A**2+self._line_q**4)+
+                      54*self._area_A**2+self._line_q**4)**(1/3)+
+                     (6*math.sqrt(3)*self._area_A*
+                      math.sqrt(27*self._area_A**2+self._line_q**4)+
+                      54*self._area_A**2+self._line_q**4)**(1/3)-2*
+                     self._line_q**(4/3))/(3*self._line_q**(1/3))
+                
+            elif self._line_h != 0 and self._anchor_beta != 0:
+                p = self._line_h/math.sin(self._anchor_beta)
+
+            elif self._line_h != 0 and self._area_A != 0:
+                p = 2*self._area_A/self._line_h
+                
+            self._line_p = p
+
+        return self._line_p
+
+    
     def calc_alpha(self):
         if self._angle_alpha == 0:
             if self._angle_beta != 0:
@@ -197,6 +228,7 @@ class Triangle(object):
         
 
 dreieck = Triangle()
-dreieck.set_value([0, 0, 35, 0, 0, 0, 0, 0, 21])
+dreieck.set_value([0, 0, 0, 0, 3, 0, 8, 0, 0])
 print("Valid triangle: " + str(dreieck.valid_triangle))
 print(dreieck.get_value())
+
