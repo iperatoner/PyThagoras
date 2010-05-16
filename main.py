@@ -1,26 +1,32 @@
 #!/usr/bin/env python3.1
 
-werte = ['a', 'b', 'c', 'h', 'p', 'q', 'A', 'alpha', 'beta'] #Zuweisung der möglichen punkte
+'''Because there are vey similiar var-names in this module, here's a short
+explanation:
+var_list: Contains the names of the vars that can be given by the user
+given_vars: Contains the names of the given vars (e.g. ['a', 'alpha'])
+given_values: Contains the values of the given vars (e.g. ['3', '25'])
+get_values: Contains the names of the vars given by the user
+given_value_names: Same like get_values, without commas and spaces
+value_name: One single 'value_name' of all 'given_value_names'
+default_value: Contains the name of the var which value is now asked by the user
+known_values: List with all given vars and values(e.g.['a', '3', 'alpha', '25'])
+'''
 
+var_list = ['a', 'b', 'c', 'h', 'p', 'q', 'A', 'alpha', 'beta']
 def main():
-    if False:
-        pass #Der Text für die Parameterabfrage
-        
-    else:
-        geg = [] #die gegebenen punkte
-        wertgeg = [] #die werte der gegebenen punkte
-        eingabe = input("Was ist gegeben? (Trennung erfolgt durch Kommata): ")
-        letter = eingabe.split(',') #
-        for char in letter:
-            if char in werte:
-                geg.append(char) #bekannte punkte rausfiltern und zu den gegebenen hinzufügen
+    given_vars = [] # List with given Vars
+    given_values = [] # List with given values
+    get_values = input("Was ist gegeben? (Trennung erfolgt durch Kommata): ")
+    given_value_names = get_values.replace(' ','').split(',') 
+    for value_name in given_value_names:
+        if value_name in var_list:
+            given_vars.append(value_name) 
+
                 
-        for el in geg:
-            wertgeg += (input("Wert von %s: " %(el)))
+    for default_value in given_vars:
+        given_values.append(input("Wert von %s: " %(default_value)))
 
-        beka = dict(zip(geg,wertgeg)) #bekannte punkte sind nun in einem dictionary mit den werten
-
-        
-        
+    known_values = list(zip(given_vars,given_values)) 
+    print(known_values)
 if __name__ == '__main__':
     main()
