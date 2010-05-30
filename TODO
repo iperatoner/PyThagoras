@@ -1,7 +1,5 @@
-e.c. : Macht die Funktionen zur Berechnung fertig (und macht dann den Rest wenn die anderen sich geeinigt haben^^)
-stfischr: Interface-Überarbeiten bzgl. Kompatibilität mit malontop
-malontop: stfischr: Interface-Überarbeiten bzgl. Kompatibilität mit stfischr # Ausgestiegen
+e.c. : Fehlerklasse, Dokumentation der Fehlerklasse
+stfischr: Führt Interfaces cli.py und main.py zusammen, Dokumentiert diese
 nexonic: k.A.
-patlkli: Trennung Klasse <> Calc
-
-
+patlkli: Allgemeine Dokumentation
+noctux: Dokumentiert die Klasse triangle (und stellt später evtl. alles auf dicts um)
