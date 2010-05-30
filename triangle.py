@@ -19,9 +19,11 @@ class Triangle(object):
         self.triangle_vars = [self._line_a, self._line_b, self._line_c,
                               self._line_p, self._line_q, self._line_h,
                               self._area_A, self._angle_alpha, self._angle_beta]
-                              """Array for comfortably handing over the variables"""
+                              """Array for comfortably handing over the
+                               variables"""
 
-        self.valid_triangle = False """Information whether the triangle is valid"""
+        self.valid_triangle = False 
+        """Information whether the triangle is valid"""
         self.exact_triangle = True
         
 
@@ -42,7 +44,8 @@ class Triangle(object):
             
 
     def set_value(self, triangle_vars):
-        """ Set-Method enabling a comfortable way of handing over the necessary information as a list"""  # Funktion erlaubt bequem per Übergabe einer Liste das Setzen der Werte
+        """ Set-Method enabling a comfortable way of handing over 
+        the necessary information as a list"""
         self.triangle_vars = triangle_vars
         self.validation(dreieck.triangle_vars)
 
@@ -248,7 +251,8 @@ class Triangle(object):
         return self._area_A
     
     def calc_alpha(self):
-        """ Method for calculating the value of the the angle alpha if still missing"""
+        """ Method for calculating the value of the the angle alpha
+         if still missing"""
         if self._angle_alpha == 0:
             if self._angle_beta != 0:
                 self._angle_alpha = (90 - self._angle_beta)
@@ -262,7 +266,8 @@ class Triangle(object):
         return self._angle_alpha
 
     def calc_beta(self):
-        """ Method for calculating the value of the the angle beta if still missing"""
+        """ Method for calculating the value of the the angle beta
+         if still missing"""
         if self._angle_beta == 0:
             if self._angle_alpha != 0:
                 self._angle_beta = (90 - self._angle_alpha)
