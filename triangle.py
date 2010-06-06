@@ -2,6 +2,21 @@
 
 import math
 
+class PyThagorasError(Exception):
+    def __init__(self, error):
+        self.error = error
+    def __str__(self):
+        return repr(self.error)
+
+    '''
+    Usage:
+    
+    try:
+        raise PyThagorasError('a > c')
+    except PyThagorasError as e:
+        print("Error: ", e.error)
+    '''
+
 
 class Triangle(object):
     
